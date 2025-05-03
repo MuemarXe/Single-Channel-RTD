@@ -1,7 +1,7 @@
 /*
 
 Author: Evans Muema
-GitHUb: MuemaXe
+GitHUb: MuemarXe
 Date: 1/2/2025
 This is a firmware code for a single channel RTD model that supports both Pt100 and Pt1000.
 It is written for an ESP32 S3 microcontroller. It uses SPI pins for communication.
@@ -50,7 +50,7 @@ void setup() {
 
   // Initially assume Pt100 (set MUX to 430 ohm ref)
   digitalWrite(MUX_SEL_PIN, LOW);
-  digitalWrite(DEBUG_LED_PIN, HIGH); // LED on when idle
+  digitalWrite(DEBUG_LED_PIN, HIGH); 
   digitalWrite(PT100_LED_PIN, LOW);
   digitalWrite(PT1000_LED_PIN, LOW);
   Serial.println("Initial RTD type assumed: Pt100");
@@ -65,7 +65,7 @@ void loop() {
   selectRTDType();
   convertToTemperature();
 
-  delay(1000); // delay after read
+  delay(1000); 
 }
 
 void convertToTemperature() {
@@ -125,7 +125,7 @@ void readRegister() {
   SPI.transfer(0xB0); // Enable bias, 1-shot, etc.
   digitalWrite(CS_PIN, HIGH);
 
-  delay(10); // Allow conversion time
+  delay(10); 
 
   digitalWrite(CS_PIN, LOW);
   SPI.transfer(0x01); // Read RTD MSB
