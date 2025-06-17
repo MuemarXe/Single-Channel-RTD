@@ -1,5 +1,4 @@
 /*
-
 Author: Evans Muema
 GitHUb: MuemarXe
 Date: 1/2/2025
@@ -9,17 +8,17 @@ GPIO10	CS	Chip Select
 GPIO11	SDI	MOSI(Master Out, Slave In)
 GPIO13	SDO	MISO (Master In, Slave Out)
 GPIO12	SCK	SPI Clock
-
 GPIO7	S1	MUX Select (ref switch control)
 GPIO6	LED	Debug LED (blinks during reading) 
 GPIO4	Pt100 LED (Green)
 GPIO5	Pt1000 LED (Blue)
-
 */
 
 #include <Wire.h>
 #include <SPI.h>
 #include <Arduino.h>
+
+
 
 // SPI and Control Pin Definitions
 #define CS_PIN        10  // Chip Select
@@ -47,6 +46,9 @@ void setup() {
   pinMode(DEBUG_LED_PIN, OUTPUT);
   pinMode(PT100_LED_PIN, OUTPUT);
   pinMode(PT1000_LED_PIN, OUTPUT);
+
+
+  
 
   // Initially assume Pt100 (set MUX to 430 ohm ref)
   digitalWrite(MUX_SEL_PIN, LOW);
@@ -98,6 +100,8 @@ void convertToTemperature() {
     rpoly *= Rt;
     temperature += 1.5243e-10 * rpoly;
 
+
+    
     Serial.print("Temperature: ");
     Serial.println(temperature);
   }
